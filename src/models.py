@@ -11,8 +11,8 @@ Base = declarative_base()
 class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
-    username = Column(String(50), nullable=False)
-    email = Column(String(255), nullable=False)
+    username = Column(String(50), unique=True, nullable=False)
+    email = Column(String(255), unique=True, nullable=False)
 
 
 class User_Favorites(Base):
@@ -26,14 +26,14 @@ class User_Favorites(Base):
 class Star_Systems(Base):
     __tablename__ = 'star_systems'
     id = Column(Integer, primary_key=True)
-    name = Column(String(100), nullable=False)
+    name = Column(String(100), unique=True, nullable=False)
     galactic_coordinates = Column(String(50))
 
 class Factions(Base):
     __tablename__ = 'factions'
     id = Column(Integer, primary_key=True)
-    name = Column(String(100), nullable=False)
-    leader = Column(String(100), nullable=False)
+    name = Column(String(100), unique=True, nullable=False)
+    leader = Column(String(100), unique=True, nullable=False)
     organization_type = Column(String(100))
     capital = Column(String(100))
     affiliation = Column(String(100))
@@ -41,7 +41,7 @@ class Factions(Base):
 class Planets(Base):
     __tablename__ = 'planets'
     id = Column(Integer, primary_key=True)
-    name = Column(String(50), nullable=False)
+    name = Column(String(50), unique=True, nullable=False)
     population = Column(Integer)
     terrain = Column(String(100))
     climate = Column(String(100))
@@ -53,8 +53,8 @@ class Planets(Base):
 class Species(Base): 
     __tablename__ = 'species'
     id = Column(Integer, primary_key=True)
-    name = Column(String(100), nullable=False)
-    classification = Column(String(100), nullable=False)
+    name = Column(String(100), unique=True, nullable=False)
+    classification = Column(String(100), unique=True, nullable=False)
     lifespan = Column(Integer)
     language = Column(String(100), nullable=False)
 
@@ -69,7 +69,7 @@ class Planet_Species(Base):
 class Characters (Base):
     __tablename__ = 'charactes'
     id = Column(Integer, primary_key=True)
-    name = Column(String(100), nullable=False)
+    name = Column(String(100), unique=True, nullable=False)
     height = Column(Integer)
     weight = Column(Integer)
     birthdate = Column(Integer)
